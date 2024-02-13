@@ -1,0 +1,62 @@
+<div id="tetris-container">
+  <div class="body column">
+    <section class="game">
+      <div class="previsual">
+        <section class="info-panel">
+          <div class="next">
+            <canvas #next_figure></canvas>
+          </div>
+          <article class="level txt-panel">
+            <h5>Level: </h5><p>{{level}}</p>
+          </article>
+          <article class="score txt-panel">
+            <h5>Score: </h5><p>{{score}}</p>
+          </article>
+        </section>
+        <section class="controls column">
+          <article style="margin-top: 2rem;">
+            <button (click)="onClickInitGame()">
+              <fa-icon [icon]="faCirclePlay" [title]="'Iniciar Juego'" style="color: #26194dde;"></fa-icon>
+            </button>
+            <button (click)="onClickStopGame()">
+              <fa-icon [icon]="faPauseCircle" [title]="'Pausar Juego'" style="color: #26194dde;"></fa-icon>
+            </button>
+            <button (click)="onClickResetGame()">
+              <fa-icon [icon]="faRotateRight" [title]="'Reiniciar Juego'" style="color: #26194dde;"></fa-icon>
+            </button>
+          </article>
+        </section>
+      </div>
+      <canvas #board></canvas>
+    </section>
+    <div class="mobile-controls row">
+      <section class="controls row" style="align-items: flex-end;">
+        <span [title]="'Rotar pieza'">
+          <article>
+            <button (click)="onClickRotate()" style="width: 150px;">
+              <p style="font-size: 24px; margin:0"> - </p>
+            </button>
+          </article>
+        </span>
+      </section>
+      <section class="controls column">
+        <!-- <article>
+          <button (click)="''">
+            <fa-icon [icon]="faAngleUp" [title]="'Mover a izquierda'" style="color: #26194dde;"></fa-icon>
+          </button>
+        </article> -->
+        <article>
+          <button (click)="onClickGoLeft()">
+            <fa-icon [icon]="faAngleLeft" [title]="'Mover a izquierda'" style="color: #26194dde;"></fa-icon>
+          </button>
+          <button (click)="onClickGoRight()">
+            <fa-icon [icon]="faAngleRight" [title]="'Mover a derecha'" style="color: #26194dde;"></fa-icon>
+          </button>
+          <button (mousedown)="onMouseDownGoDown()" (mouseup)="onMouseUpStopGoDown()">
+            <fa-icon [icon]="faAngleDown" [title]="'Incrementar caída'" style="color: #26194dde;"></fa-icon>
+          </button>
+        </article>
+      </section>
+    </div>
+  </div>
+</div>
