@@ -1,5 +1,6 @@
 # GamesFe
 
+You can play my own version of tetris easy, enjoy it.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
 ## Development server
