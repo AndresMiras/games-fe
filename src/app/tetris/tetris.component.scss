@@ -48,21 +48,28 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
         // row-gap: 2rem;
         padding-right: 0.5rem;
         .info-panel {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 0 .75em;
+          width: calc(100% - .75em);
           .next {
-            display: block;
+            width: 80%;
+            height: 80%;
             padding: 5px;
             border-radius: 3px;
             border: 2px solid rgba(0, 0, 0, 0.3);
             background-color: rgba(254, 254, 254, 0.05);
-            canvas {
+            #next_figure {
+              width: 100%;
               border: 0;
-              max-width: 80%;
-              min-height: 70%;
             }
           }
 
           .txt-panel {
             display: flex;
+            width: 90%;
           }
 
           .level,
@@ -172,13 +179,10 @@ i {
   font-weight: 550;
 }
 
-$btnSecondSize: 2rem;
+$btnSecondSize: 2.25rem;
 $btnSVGSize: 70%;
 
 @media only screen and (max-width: 515px) {
-  #next {
-    max-width: 75px;
-  }
   #board {
     max-width: 220px;
   }
@@ -201,18 +205,12 @@ $btnSVGSize: 70%;
 }
 
 @media only screen and (max-width: 420px) {
-  #next {
-    max-width: 75px;
-  }
   #board {
     max-width: 150px;
   }
 }
 
 @media only screen and (max-width: 300px) {
-  #next {
-    max-width: 65px;
-  }
   #board {
     max-width: 130px;
   }

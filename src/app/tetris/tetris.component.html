@@ -4,7 +4,7 @@
       <div class="previsual">
         <section class="info-panel">
           <div class="next" id="next">
-            <canvas #next_figure></canvas>
+            <canvas #next_figure id="next_figure"></canvas>
           </div>
           <article class="level txt-panel">
             <h5>Level: </h5><p>{{level}}</p>
@@ -46,14 +46,14 @@
           </button>
         </article> -->
         <article>
+          <button (mousedown)="onMouseDownGoDown()" (mouseup)="onMouseUpStopGoDown()" class="btn-control" id="btn-down">
+            <fa-icon [icon]="faAngleDown" [title]="'Incrementar caída'" style="color: #26194dde;"></fa-icon>
+          </button>
           <button (click)="onClickGoLeft()" class="btn-control">
             <fa-icon [icon]="faAngleLeft" [title]="'Mover a izquierda'" style="color: #26194dde;"></fa-icon>
           </button>
           <button (click)="onClickGoRight()" class="btn-control">
             <fa-icon [icon]="faAngleRight" [title]="'Mover a derecha'" style="color: #26194dde;"></fa-icon>
-          </button>
-          <button (mousedown)="onMouseDownGoDown()" (mouseup)="onMouseUpStopGoDown()" class="btn-control" id="btn-down">
-            <fa-icon [icon]="faAngleDown" [title]="'Incrementar caída'" style="color: #26194dde;"></fa-icon>
           </button>
         </article>
       </section>
