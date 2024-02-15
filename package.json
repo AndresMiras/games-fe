@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-gh": "ng deploy --base-href=/games-fe/",
+    "build-ghp": "ng deploy --base-href=/games-fe/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
