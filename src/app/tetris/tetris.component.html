@@ -27,7 +27,15 @@
           </article>
         </section>
       </div>
-      <canvas #board id="board"></canvas>
+      <div class="board-frame">
+        <canvas #board id="board">
+        </canvas>
+        <div *ngIf="_endGame" id="game-over">
+          <div class="gmo-container">
+            <h3>GAME OVER</h3>
+          </div>
+        </div>
+      </div>
     </section>
     <div class="mobile-controls row">
       <section class="controls row" style="align-items: flex-end;">

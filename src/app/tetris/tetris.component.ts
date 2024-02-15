@@ -37,7 +37,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   private _figureCloned!: Figure;
   private _boardM: Matrix = [];
   private _nextFigureM: Matrix = [];
-  private _endGame = false;
+  _endGame = false;
   level = 0;
   score = 0;
 
