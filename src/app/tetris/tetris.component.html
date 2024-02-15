@@ -3,7 +3,7 @@
     <section class="game">
       <div class="previsual">
         <section class="info-panel">
-          <div class="next">
+          <div class="next" id="next">
             <canvas #next_figure></canvas>
           </div>
           <article class="level txt-panel">
@@ -15,25 +15,25 @@
         </section>
         <section class="controls column">
           <article style="margin-top: 2rem;">
-            <button (click)="onClickInitGame()">
+            <button (click)="onClickInitGame()" class="btn-control">
               <fa-icon [icon]="faCirclePlay" [title]="'Iniciar Juego'" style="color: #26194dde;"></fa-icon>
             </button>
-            <button (click)="onClickStopGame()">
+            <button (click)="onClickStopGame()" class="btn-control">
               <fa-icon [icon]="faPauseCircle" [title]="'Pausar Juego'" style="color: #26194dde;"></fa-icon>
             </button>
-            <button (click)="onClickResetGame()">
+            <button (click)="onClickResetGame()" class="btn-control">
               <fa-icon [icon]="faRotateRight" [title]="'Reiniciar Juego'" style="color: #26194dde;"></fa-icon>
             </button>
           </article>
         </section>
       </div>
-      <canvas #board></canvas>
+      <canvas #board id="board"></canvas>
     </section>
     <div class="mobile-controls row">
       <section class="controls row" style="align-items: flex-end;">
         <span [title]="'Rotar pieza'">
           <article>
-            <button (click)="onClickRotate()" style="width: 150px;">
+            <button (click)="onClickRotate()" class="btn-rotate">
               <p style="font-size: 24px; margin:0"> - </p>
             </button>
           </article>
@@ -46,13 +46,13 @@
           </button>
         </article> -->
         <article>
-          <button (click)="onClickGoLeft()">
+          <button (click)="onClickGoLeft()" class="btn-control">
             <fa-icon [icon]="faAngleLeft" [title]="'Mover a izquierda'" style="color: #26194dde;"></fa-icon>
           </button>
-          <button (click)="onClickGoRight()">
+          <button (click)="onClickGoRight()" class="btn-control">
             <fa-icon [icon]="faAngleRight" [title]="'Mover a derecha'" style="color: #26194dde;"></fa-icon>
           </button>
-          <button (mousedown)="onMouseDownGoDown()" (mouseup)="onMouseUpStopGoDown()">
+          <button (mousedown)="onMouseDownGoDown()" (mouseup)="onMouseUpStopGoDown()" class="btn-control">
             <fa-icon [icon]="faAngleDown" [title]="'Incrementar caída'" style="color: #26194dde;"></fa-icon>
           </button>
         </article>
