@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { Matrix, RepresentedCell } from './tetris.interfaces';
 import { Block, Figure } from './tetris.entities';
 import { faAngleDown, faAngleLeft, faAngleRight, faAngleUp, faCirclePlay, faPauseCircle, faPowerOff, faRotateRight } from '@fortawesome/free-solid-svg-icons';
@@ -51,7 +51,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   faAngleUp = faAngleUp;
   faAngleDown = faAngleDown;
 
-  constructor() {
+  constructor(private renderer: Renderer2) {
     this.initFigures();
   }
 
@@ -74,6 +74,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
     this.setDefaultBoardSize();
     this.defineMatrix(this._boardM);
     // this.startIntervalUpdate();
+    this.enableMobileControls();
   }
 
   startIntervalUpdate(time = this._timer) {
@@ -382,6 +383,18 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
     clearInterval(this._boardInterval);
     this.startIntervalUpdate();
     this._endGame = false;
+  }
+
+  enableMobileControls() {
+    const element = document.getElementById("btn-down") as HTMLButtonElement;
+
+    this.renderer.listen(element, 'touchstart', (event) => {
+      this.onMouseDownGoDown();
+    });
+
+    this.renderer.listen(element, 'touchend', (event) => {
+      this.onMouseUpStopGoDown();
+    });
   }
 
   ngOnDestroy(): void {

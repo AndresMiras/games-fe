@@ -22,13 +22,14 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
     align-items: flex-start;
     justify-content: center;
     width: max-content;
-    height: max-content;
+    height: 80%;
 
     .game {
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      height: 100%;
+      height: 50vmax;
+      width: 90%;
       padding: 1em;
       border: 2px solid
         linear-gradient(
@@ -90,6 +91,8 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
       }
       canvas {
         border: 2px solid rgba(50, 55, 50, 0.3);
+        height: 100%;
+        width: 80%;
       }
     }
   }
@@ -136,9 +139,9 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
 }
 
 .mobile-controls {
-  padding: 0.5rem 0rem;
+  padding: .5em 1rem;
   margin-top: 1rem;
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -169,6 +172,9 @@ i {
   font-weight: 550;
 }
 
+$btnSecondSize: 2rem;
+$btnSVGSize: 70%;
+
 @media only screen and (max-width: 515px) {
   #next {
     max-width: 75px;
@@ -177,20 +183,20 @@ i {
     max-width: 220px;
   }
   ::ng-deep .btn-rotate {
-    height: 1.5em !important;
-    width: 3rem;
+    height: $btnSecondSize !important;
+    width: 4rem;
     svg {
-      height: 100%;
-      width: 100%;
+      height: $btnSVGSize;
+      width: $btnSVGSize;
     }
   }
   ::ng-deep .btn-control {
     svg {
-      height: 100%;
-      width: 100%;
+      height: $btnSVGSize;
+      width: $btnSVGSize;
     }
-    height: 1.5em !important;
-    width: 1.5em !important;
+    height: $btnSecondSize !important;
+    width: $btnSecondSize !important;
   }
 }
 
@@ -201,22 +207,6 @@ i {
   #board {
     max-width: 150px;
   }
-  ::ng-deep .btn-rotate {
-    height: 1.5em !important;
-    width: 3rem;
-    svg {
-      height: 100%;
-      width: 100%;
-    }
-  }
-  ::ng-deep .btn-control {
-    svg {
-      height: 100%;
-      width: 100%;
-    }
-    height: 1.5em !important;
-    width: 1.5em !important;
-  }
 }
 
 @media only screen and (max-width: 300px) {
@@ -225,21 +215,5 @@ i {
   }
   #board {
     max-width: 130px;
-  }
-  ::ng-deep .btn-rotate {
-    height: 1.5em !important;
-    width: 3rem;
-    svg {
-      height: 100%;
-      width: 100%;
-    }
-  }
-  ::ng-deep .btn-control {
-    svg {
-      height: 100%;
-      width: 100%;
-    }
-    height: 1.5em !important;
-    width: 1.5em !important;
   }
 }
