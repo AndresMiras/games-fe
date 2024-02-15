@@ -41,6 +41,7 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
       box-shadow: 1px -1px 6px 1px rgba(0, 0, 0, 0.5);
       .previsual {
         height: 100%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -52,8 +53,8 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 0 .75em;
-          width: calc(100% - .75em);
+          padding: 0;
+          width: calc(100% - .25em);
           .next {
             width: 80%;
             height: 80%;
@@ -179,7 +180,7 @@ i {
   font-weight: 550;
 }
 
-$btnSecondSize: 2.25rem;
+$btnSecondSize: 2.05rem;
 $btnSVGSize: 70%;
 
 @media only screen and (max-width: 515px) {
