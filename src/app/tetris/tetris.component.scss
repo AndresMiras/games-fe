@@ -1,7 +1,7 @@
 $defaultWith: calc(100% - 5rem);
-$color-primary: rgba(94, 53, 177, 0.8);
-$color-primary-border: rgba(94, 53, 177, 0.65);
-$color-secondary: rgba(25, 118, 210, 0.8);
+$color-primary: rgba(228, 255, 255, 0.8);
+$color-primary-border: rgba(161, 120, 243, 0.65);
+$color-secondary: rgba(204, 198, 253, 0.8);
 $color-secondary-border: rgba(25, 118, 210, 0.65);
 * {
   color: #2f254efc;
@@ -15,21 +15,23 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
   justify-content: center;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
-  background: linear-gradient(to right, $color-primary, $color-secondary);
+  background-color: rgb(236, 255, 250);
 
   .body {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     width: max-content;
-    height: 80%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 80%;
 
     .game {
       display: flex;
       align-items: flex-start;
       justify-content: space-around;
       column-gap: 1em;
-      height: 85%;
+      height: 52vmax;
       width: 90%;
       padding: 1em;
       border: 2px solid
@@ -40,6 +42,7 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
         );
       border-radius: 3px;
       box-shadow: 1px -1px 6px 1px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(to bottom, $color-secondary, $color-primary);
       .previsual {
         height: 100%;
         width: 30%;
@@ -76,7 +79,7 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
 
           .level,
           .score {
-            background-color: rgba(243, 255, 249, 0.08);
+            background-color: rgba(40, 40, 40, 0.08);
             margin: 0.5em 0.35rem 0 0.35em;
             display: flex;
             justify-content: space-between;
@@ -116,6 +119,7 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
   align-items: center;
   justify-content: flex-end;
   column-gap: 0.5rem;
+  row-gap: 0.5rem;
   height: 100%;
 
   article {
@@ -142,6 +146,14 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
   }
 }
 
+.board-controls {
+  margin-top: 2rem;
+  justify-content: space-between !important;
+  .board-control {
+    max-width: 30% !important;
+  }
+}
+
 .mobile-controls {
   padding: 0.5em 1rem;
   margin-top: 1rem;
@@ -153,6 +165,8 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
     linear-gradient(to right, $color-primary-border, $color-secondary-border);
   border-radius: 3px;
   box-shadow: 1px -1px 6px 1px rgba(0, 0, 0, 0.5);
+  // background: linear-gradient(to bottom, $color-primary, $color-secondary);
+  background: rgba(219, 255, 242, 0.706);
 }
 
 .btn-rotate {
@@ -164,7 +178,7 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
   margin: 0;
   padding: 0;
   height: 100%;
-  width: 70%;
+  width: 100%;
   canvas {
     border: 2px solid rgba(50, 55, 50, 0.3);
     height: 100%;
@@ -238,9 +252,9 @@ $btnSecondSize: 2.05rem;
 $btnSVGSize: 70%;
 
 @media only screen and (max-width: 515px) {
-  #board {
-    max-width: 220px;
-  }
+  // .game {
+  //   max-width: 90%;
+  // }
   ::ng-deep .btn-rotate {
     height: $btnSecondSize !important;
     width: 4rem;
@@ -260,13 +274,13 @@ $btnSVGSize: 70%;
 }
 
 @media only screen and (max-width: 420px) {
-  #board {
-    max-width: 150px;
-  }
+  // #board {
+  //   max-width: 150px;
+  // }
 }
 
 @media only screen and (max-width: 300px) {
-  #board {
-    max-width: 130px;
-  }
+  // #board {
+  //   max-width: 130px;
+  // }
 }

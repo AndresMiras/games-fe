@@ -14,14 +14,14 @@
           </article>
         </section>
         <section class="controls column">
-          <article style="margin-top: 2rem;">
-            <button (click)="onClickInitGame()" class="btn-control">
+          <article class="board-controls">
+            <button (click)="onClickInitGame()" class="btn-control board-control">
               <fa-icon [icon]="faCirclePlay" [title]="'Iniciar Juego'" style="color: #26194dde;"></fa-icon>
             </button>
-            <button (click)="onClickStopGame()" class="btn-control">
+            <button (click)="onClickStopGame()" class="btn-control board-control">
               <fa-icon [icon]="faPauseCircle" [title]="'Pausar Juego'" style="color: #26194dde;"></fa-icon>
             </button>
-            <button (click)="onClickResetGame()" class="btn-control">
+            <button (click)="onClickResetGame()" class="btn-control board-control">
               <fa-icon [icon]="faRotateRight" [title]="'Reiniciar Juego'" style="color: #26194dde;"></fa-icon>
             </button>
           </article>
