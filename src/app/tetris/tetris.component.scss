@@ -53,8 +53,6 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        // row-gap: 2rem;
-        // padding-right: 0.5rem;
         .info-panel {
           display: flex;
           flex-direction: column;
@@ -95,7 +93,6 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
             font-size: 15px;
             width: 50px;
             margin: 0;
-            // margin: 18px 0 0 0.2em;
           }
           p {
             font-size: 17px;
@@ -168,8 +165,6 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
     linear-gradient(to right, $color-primary-border, $color-secondary-border);
   border-radius: 3px;
   box-shadow: 1px -1px 6px 1px rgba(0, 0, 0, 0.5);
-  // background: linear-gradient(to bottom, $color-primary, $color-secondary);
-  // background: rgba(219, 255, 242, 0.706);
   background-color: $color-secondary;
 }
 
@@ -256,9 +251,6 @@ $btnSecondSize: 2.05rem;
 $btnSVGSize: 70%;
 
 @media only screen and (max-width: 515px) {
-  // .game {
-  //   max-width: 90%;
-  // }
   ::ng-deep .btn-rotate {
     height: $btnSecondSize !important;
     width: 4rem;
@@ -278,9 +270,6 @@ $btnSVGSize: 70%;
 }
 
 @media only screen and (max-width: 420px) {
-  // #board {
-  //   max-width: 150px;
-  // }
 }
 
 @media only screen and (max-width: 300px) {
