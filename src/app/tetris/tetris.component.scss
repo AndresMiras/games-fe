@@ -252,6 +252,12 @@ $btnSecondSize: 2.05rem;
 $btnSVGSize: 70%;
 
 @media only screen and (max-width: 515px) {
+  h5 {
+    font-size: 13px;
+  }
+  p {
+    font-size: 15px;
+  }
   ::ng-deep .btn-rotate {
     height: $btnSecondSize !important;
     width: 4rem;
@@ -259,7 +265,7 @@ $btnSVGSize: 70%;
       height: $btnSVGSize;
       width: $btnSVGSize;
     }
-  }
+  };
   ::ng-deep .btn-control {
     svg {
       height: $btnSVGSize;
@@ -267,7 +273,7 @@ $btnSVGSize: 70%;
     }
     height: $btnSecondSize !important;
     width: $btnSecondSize !important;
-  }
+  };
 }
 
 @media only screen and (max-width: 420px) {

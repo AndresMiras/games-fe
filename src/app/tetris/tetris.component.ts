@@ -30,7 +30,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   private _canvasNextFigureWidth = 0;
   private _canvasNextFigureHeight = 0;
   private _boardInterval!: NodeJS.Timeout;
-  private _timer = 350;
+  private _timer = 420;
   private _timerGoDown = 0;
   private _figure!: Figure;
   private _nextFigure!: Figure;
@@ -80,7 +80,13 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
 
   startIntervalUpdate(time = this._timer) {
     this._boardInterval = setInterval(() => {
-      this.update();
+      try {
+        this.update();
+      } catch ( e) {
+        console.error(e);
+        clearInterval(this._boardInterval);
+        clearInterval(this._timer);
+      }
     }, time);
   }
 
@@ -124,7 +130,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
     this.forEachColumns((x, column) => {
       matrix.push([]);
       this.forEachRows((y, row) => {
-        matrix[column][row] = {x,y, drawed: false}
+        matrix[column][row] = {x,y, drawed: false};
       }, blockSize, matrixHeight);
     }, blockSize, matrixWidth);
   }
@@ -374,6 +380,8 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   }
 
   onClickInitGame() {
+    if(this._boardInterval) clearInterval(this._boardInterval);
+    if(this._timer) clearInterval(this._timer);
     this.startIntervalUpdate();
   }
 
@@ -382,13 +390,16 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   }
 
   onClickResetGame() {
+    clearInterval(this._boardInterval);
+    clearInterval(this._timer);
+    this._endGame = false;
     this.level = 0;
     this.score = 0;
+    this.lines = 0;
+    this._boardM = [];
     this.defineMatrix(this._boardM);
     this.initFigures();
-    clearInterval(this._boardInterval);
     this.startIntervalUpdate();
-    this._endGame = false;
   }
 
   enableMobileControls() {

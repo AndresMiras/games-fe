@@ -107,7 +107,7 @@ export class Figure {
           matrix[x + dx][y + dy].drawed = false;
         }
       }
-    })
+    });
   }
   downOneLevel() {
     this.mapCells(cell => {cell.y++; return cell});
@@ -122,17 +122,18 @@ export class Figure {
     return this.everyCells(cell => {
       let moveX = cell.x + x;
       let isCellOutOfBoard = moveX >= 0 && moveX < matrix.length && cell.y >= 0;
-      return isCellOutOfBoard && !(matrix[moveX] !== undefined && matrix[moveX][cell.y]?.drawed)
+      const existBoardCell = !!matrix[moveX] && matrix[moveX][cell.y]?.drawed
+      return isCellOutOfBoard && !existBoardCell
     });
   }
   hasSpaceInColumn(matrixBoard:Matrix, y: number) {
     return this._matrix.every(x => {
       const cell = x[y];
-      return !cell.active && !matrixBoard[cell.x][cell.y]?.drawed
+      return cell && !cell.active && !matrixBoard[cell.x][cell.y]?.drawed
     });
   }
   goRight(matrix: Matrix) {
-    if(this.hasSpaceInColumn(matrix, this._matrix.length - 1)) {
+    if(matrix && this.hasSpaceInColumn(matrix, this._matrix.length - 1)) {
       const recordedMatrix:Matrix = JSON.parse(JSON.stringify(this._matrix));
       recordedMatrix.forEach(row => {
         return row.forEach( cell => {
@@ -146,6 +147,7 @@ export class Figure {
         }
       });
       this._matrix = recordedMatrix;
+      // Revisar esta funcionalidad, no setea bien el true o el false al ir a la derecha
     } else if (this.checkIfCanMove(1, matrix)) {
       this.mapCells(cell => {
         cell.x++;
@@ -170,8 +172,6 @@ export class Figure {
       this._matrix = recordedMatrix;
     } else if (this.checkIfCanMove(-1, matrix)) {
       this.mapCells(cell => {
-        const {x,y} = cell;
-        matrix[x][y].drawed = false;
         cell.x--;
         return cell
       })
