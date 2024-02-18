@@ -39,6 +39,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   private _nextFigureM: Matrix = [];
   _endGame = false;
   level = 0;
+  lines = 0;
   score = 0;
 
   // constrol icons
@@ -301,6 +302,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   }
 
   setScore(deletedRows: number) {
+    this.lines += deletedRows;
     this.score += deletedRows * 100;
     this.level = Number((this.score / ((this._rows / 4) * 100)).toFixed(0));
     this._timer = this._timer - (this.level > 0 ? 2 : 0);
@@ -309,12 +311,20 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
     this.startIntervalUpdate(this._timer);
   }
 
-  onClickGoRight() {
-    this._figure.goRight(this._boardM);
+  async onClickRotate() {
+    // this._figure.rotate90();
+    this._figure.rotate45(this._boardM);
+    this.drawMatrix();
   }
 
-  onClickGoLeft() {
+  async onClickGoRight() {
+    this._figure.goRight(this._boardM);
+    this.drawMatrix();
+  }
+
+  async onClickGoLeft() {
     this._figure.goLeft(this._boardM);
+    this.drawMatrix();
   }
 
   onMouseDownGoDown() {
@@ -326,9 +336,10 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
     }
   }
 
-  onClickRotate() {
-    // this._figure.rotate90();
-    this._figure.rotate45(this._boardM);
+  onMouseUpStopGoDown() {
+    clearInterval(this._boardInterval);
+    this._timerGoDown = this._timer;
+    this.startIntervalUpdate(this._timer);
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -345,11 +356,6 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
     }
   }
 
-  onMouseUpStopGoDown() {
-    clearInterval(this._boardInterval);
-    this._timerGoDown = this._timer;
-    this.startIntervalUpdate(this._timer);
-  }
 
   @HostListener('document:keyup', ['$event'])
   onKeyboardKeyUp(event: KeyboardEvent) {

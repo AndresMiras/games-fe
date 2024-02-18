@@ -1,8 +1,9 @@
 $defaultWith: calc(100% - 5rem);
-$color-primary: rgb(240, 240, 240);
+$color-primary: rgb(255, 255, 240);
 $color-primary-border: rgba(161, 120, 243, 0.65);
-$color-secondary: rgb(217, 223, 255);
+$color-secondary: rgb(230, 230, 255);
 $color-secondary-border: rgba(25, 118, 210, 0.65);
+$boardColor: azure;
 * {
   color: #2f254efc;
 }
@@ -13,8 +14,8 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
   align-items: center;
   justify-content: center;
   row-gap: 2rem;
-  width: calc(100% - .1em);
-  height: calc(100% - .1em);
+  width: calc(100% - .2em);
+  height: calc(100% - .2em);
   padding: .1em;
   background-color: $color-primary;
 
@@ -66,7 +67,7 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
             padding: 5px;
             border-radius: 3px;
             border: 2px solid rgba(0, 0, 0, 0.3);
-            background-color: rgba(254, 254, 254, 0.05);
+            background-color: $boardColor;
             #next_figure {
               width: 100%;
               border: 0;
@@ -79,25 +80,74 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
           }
 
           .level,
-          .score {
-            background-color: rgba(40, 40, 40, 0.08);
+          .score,
+          .lines {
+            background-color: rgba(250, 250, 250, 0.982);
             margin: 0.5em 0.35rem 0 0.35em;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 3px;
-            padding: 0.3em 0.25em;
+            padding: 0.2em;
           }
 
           h5 {
             font-size: 15px;
             width: 50px;
             margin: 0;
+            font-family: monospace;
           }
           p {
+            font-family: monospace;
             font-size: 17px;
             width: fit-content;
             margin: 0;
+          }
+        }
+      }
+
+      .board-frame {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        canvas {
+          background-color: $boardColor;
+          border: 2px solid rgba(50, 55, 50, 0.3);
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      #game-over {
+        animation: opacity ease-in 2s;
+        z-index: 100;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(120, 58, 255, 0.2);
+        padding: 0.2em;
+        height: calc(100% - 0.2em);
+        width: calc(100% - 0.2em);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .gmo-container {
+          width: 5rem;
+          h3 {
+            overflow: hidden;
+            font-family: monospace;
+            height: fit-content;
+            padding: 0;
+            margin: 0;
+            right: 0;
+            width: 0;
+            white-space: nowrap;
+            border-right: 0.25em solid #b9a2fa;
+            animation: typing 3s steps(38) 1s 1 normal both,
+              blink 1s steps(1) infinite;
           }
         }
       }
@@ -166,51 +216,6 @@ $color-secondary-border: rgba(25, 118, 210, 0.65);
 
 .btn-rotate {
   width: 150px !important;
-}
-
-.board-frame {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  canvas {
-    border: 2px solid rgba(50, 55, 50, 0.3);
-    height: 100%;
-    width: 100%;
-  }
-}
-
-#game-over {
-  animation: opacity ease-in 2s;
-  z-index: 100;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(120, 58, 255, 0.2);
-  padding: 0.2em;
-  height: calc(100% - 0.2em);
-  width: calc(100% - 0.2em);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  .gmo-container {
-    width: 5rem;
-    h3 {
-      overflow: hidden;
-      font-family: monospace;
-      height: fit-content;
-      padding: 0;
-      margin: 0;
-      right: 0;
-      width: 0;
-      white-space: nowrap;
-      border-right: 0.25em solid #c2adfb;
-      animation: typing 3s steps(38) 1s 1 normal both,
-        blink 1s steps(1) infinite;
-    }
-  }
 }
 
 @keyframes opacity {
