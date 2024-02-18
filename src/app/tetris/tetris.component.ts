@@ -5,11 +5,12 @@ import { Block, Figure } from './tetris.entities';
 import { faAngleDown, faAngleLeft, faAngleRight, faAngleUp, faCirclePlay, faPauseCircle, faPowerOff, faRotateRight, faVolumeHigh, faVolumeMute } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Howl } from 'howler';
+import { StarBackgroundComponent } from '../shared/components/star-background/star-background.component';
 
 @Component({
   selector: 'tetris-game',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, StarBackgroundComponent],
   templateUrl: './tetris.component.html',
   styleUrl: './tetris.component.scss'
 })

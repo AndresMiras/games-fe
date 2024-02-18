@@ -9,6 +9,7 @@ $boardColor: azure;
 }
 
 #tetris-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +21,7 @@ $boardColor: azure;
   background-color: $color-primary;
 
   .body {
+    z-index: 0;
     display: flex;
     align-items: center;
     justify-content: center;
