@@ -173,7 +173,7 @@ $boardColor: azure;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    column-gap: 0.05rem;
+    column-gap: 0.5rem;
     width: 100%;
     button {
       height: 2.5em;
@@ -193,10 +193,11 @@ $boardColor: azure;
 }
 
 .board-controls {
-  margin-top: 2rem;
+  margin-top: 0.2rem;
   justify-content: space-between !important;
+  column-gap: .2em;
   .board-control {
-    max-width: 30% !important;
+    max-width: 50% !important;
   }
 }
 
@@ -284,7 +285,7 @@ $btnSVGSize: 70%;
   //   max-width: 130px;
   // }
   .board-control {
-    max-width: 28%;
+    max-width: 42%;
   }
   .btn-rotate {
     height: calc($btnSecondSize - .45em) !important;

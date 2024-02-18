@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { Matrix, RepresentedCell } from './tetris.interfaces';
 import { Block, Figure } from './tetris.entities';
-import { faAngleDown, faAngleLeft, faAngleRight, faAngleUp, faCirclePlay, faPauseCircle, faPowerOff, faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleLeft, faAngleRight, faAngleUp, faCirclePlay, faPauseCircle, faPowerOff, faRotateRight, faVolumeHigh, faVolumeMute } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Howl } from 'howler';
 
 @Component({
   selector: 'tetris-game',
@@ -37,6 +38,8 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   private _figureCloned!: Figure;
   private _boardM: Matrix = [];
   private _nextFigureM: Matrix = [];
+  private _tetrisSongTheme!: Howl;
+  _isTetrisSongPlaying = true;
   _endGame = false;
   level = 0;
   lines = 0;
@@ -51,9 +54,20 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   faAngleRight = faAngleRight;
   faAngleUp = faAngleUp;
   faAngleDown = faAngleDown;
+  faVolumeHigh = faVolumeHigh
+  faVolumeMute = faVolumeMute
 
   constructor(private renderer: Renderer2) {
+    this.initSongTheme();
+    this.playStopTetrisTheme();
     this.initFigures();
+  }
+
+  initSongTheme() {
+    this._tetrisSongTheme = new Howl({
+      src: ['/assets/songs/tetris_song_short_theme.mp3'],
+      loop: true
+    });
   }
 
   initFigures() {
@@ -412,6 +426,19 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
     this.renderer.listen(element, 'touchend', (event) => {
       this.onMouseUpStopGoDown();
     });
+  }
+
+  playStopTetrisTheme() {
+    if(this._isTetrisSongPlaying) {
+      this._tetrisSongTheme.play();
+    } else {
+      this._tetrisSongTheme.pause();
+    }
+  }
+
+  playTetrisTheme() {
+    this._isTetrisSongPlaying = !this._isTetrisSongPlaying;
+    this.playStopTetrisTheme();
   }
 
   ngOnDestroy(): void {
