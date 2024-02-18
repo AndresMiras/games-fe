@@ -89,7 +89,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
     this.defineMatrix(this._boardM);
     // this.startIntervalUpdate();
     this.enableMobileControls();
-    this.initSongTheme();
+
   }
 
   startIntervalUpdate(time = this._timer) {
@@ -429,6 +429,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   }
 
   playStopTetrisTheme() {
+    if(!this._tetrisSongTheme) this.initSongTheme();
     if(this._isTetrisSongPlaying) {
       this._tetrisSongTheme.play();
     } else {
