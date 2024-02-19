@@ -65,7 +65,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
 
   initSongTheme() {
     this._tetrisSongTheme = new Howl({
-      src: ['../assets/songs/tetris_song_short_theme.mp3'],
+      src: ['./assets/songs/tetris_song_short_theme.mp3'],
       loop: true
     });
   }
