@@ -32,7 +32,8 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   private _canvasNextFigureWidth = 0;
   private _canvasNextFigureHeight = 0;
   private _boardInterval!: NodeJS.Timeout;
-  private _timer = 420;
+  private _timerDefault:number;
+  private _timer:number;
   private _timerGoDown = 0;
   private _figure!: Figure;
   private _nextFigure!: Figure;
@@ -59,8 +60,11 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   faVolumeMute = faVolumeMute
 
   constructor(private renderer: Renderer2) {
+    this._timerDefault = 420;
+    this._timer = this._timerDefault;
     this.initFigures();
     this.initSongTheme();
+
   }
 
   initSongTheme() {
@@ -340,12 +344,12 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
 
   async onClickGoRight() {
     this._figure.goRight(this._boardM);
-    this.drawMatrix();
+    // this.drawMatrix();
   }
 
   async onClickGoLeft() {
     this._figure.goLeft(this._boardM);
-    this.drawMatrix();
+    // this.drawMatrix();
   }
 
   onMouseDownGoDown() {
@@ -408,6 +412,7 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
     clearInterval(this._boardInterval);
     clearInterval(this._timer);
     this._endGame = false;
+    this._timer = this._timerDefault;
     this.level = 0;
     this.score = 0;
     this.lines = 0;
