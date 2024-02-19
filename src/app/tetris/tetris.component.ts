@@ -60,11 +60,12 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
 
   constructor(private renderer: Renderer2) {
     this.initFigures();
+    this.initSongTheme();
   }
 
   initSongTheme() {
     this._tetrisSongTheme = new Howl({
-      src: ['/assets/songs/tetris_song_short_theme.mp3'],
+      src: ['../assets/songs/tetris_song_short_theme.mp3'],
       loop: true
     });
   }
@@ -429,7 +430,6 @@ export class TetrisComponent implements OnDestroy, AfterViewInit {
   }
 
   playStopTetrisTheme() {
-    if(!this._tetrisSongTheme) this.initSongTheme();
     if(this._isTetrisSongPlaying) {
       this._tetrisSongTheme.play();
     } else {
